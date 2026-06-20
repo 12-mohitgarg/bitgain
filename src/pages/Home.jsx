@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import CircuitBackground from '../components/CircuitBackground';
+import HeroCanvasBackground from '../components/HeroCanvasBackground';
 import LiveTicker from '../components/LiveTicker';
 import GameCabinet from '../components/GameCabinet';
 import GameSpotlight from '../components/GameSpotlight';
 import StatsBar from '../components/StatsBar';
 import PlayerVoices from '../components/PlayerVoices';
+import HomeBackground from '../components/HomeBackground';
 import { GAMES } from '../data/games';
 import './Home.css';
 
@@ -57,9 +58,10 @@ const floatingTokens = ['BTG', 'USDT', '2x', '4.5x', '1%'];
 
 export default function Home() {
   return (
-    <div className="home">
+    <div className="home" style={{ position: 'relative' }}>
+      <HomeBackground />
       <section className="hero">
-        <CircuitBackground />
+        <HeroCanvasBackground />
         <div className="hero__beam hero__beam--one" />
         <div className="hero__beam hero__beam--two" />
         <div className="container hero__grid">

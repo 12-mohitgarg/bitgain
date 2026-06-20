@@ -10,6 +10,7 @@ import Leaderboard from './pages/Leaderboard';
 import About from './pages/About';
 import Help from './pages/Help';
 import Contact from './pages/Contact';
+import GameDetail from './pages/GameDetail';
 
 function PageWrap({ children }) {
   return (
@@ -36,6 +37,7 @@ export default function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageWrap><Home /></PageWrap>} />
             <Route path="/games" element={<PageWrap><Games /></PageWrap>} />
+            <Route path="/game/:id" element={<PageWrap><GameDetail /></PageWrap>} />
             <Route path="/leaderboard" element={<PageWrap><Leaderboard /></PageWrap>} />
             <Route path="/about" element={<PageWrap><About /></PageWrap>} />
             <Route path="/help" element={<PageWrap><Help /></PageWrap>} />

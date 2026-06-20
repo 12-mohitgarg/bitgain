@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import GameCabinet from '../components/GameCabinet';
 import StatsBar from '../components/StatsBar';
+import GamesHeroBackground from '../components/GamesHeroBackground';
 import { GAMES } from '../data/games';
 import './Games.css';
 
@@ -19,6 +20,7 @@ export default function Games() {
   return (
     <div className="games-page">
       <section className="games-hero">
+        <GamesHeroBackground />
         <div className="container games-hero__grid">
           <div>
             <span className="games-hero__eyebrow">Full Catalog</span>

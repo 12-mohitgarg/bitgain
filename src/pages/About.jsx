@@ -30,7 +30,7 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="about-hero__eyebrow">About Bitg</span>
+            <span className="about-hero__eyebrow">About Bitgain</span>
             <h1 className="about-hero__title">Built for wallet-first gaming and earning.</h1>
             <p className="about-hero__sub">
               Bitgain combines quick games, practice mode, referral access, lucky draws, and an
@@ -44,7 +44,7 @@ export default function About() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            <img src={logo} alt="Bitg logo" />
+            <img src={logo} alt="Bitgain logo" />
           </motion.div>
         </div>
       </section>

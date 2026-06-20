@@ -62,7 +62,7 @@ export default function Footer() {
             <span className="footer__coin">
               <img src={logo} alt="" />
             </span>
-            <span className="footer__wordmark">BITG ARCADE</span>
+            <span className="footer__wordmark">BITGAIN ARCADE</span>
           </div>
           <p className="footer__tagline">
             Six skill games. Real leaderboards, real rankings, zero pay-to-win.
@@ -117,7 +117,7 @@ export default function Footer() {
       </div>
 
       <div className="container footer__bottom">
-        <span>© {new Date().getFullYear()} Bitg Arcade. All scores are earned.</span>
+        <span>© {new Date().getFullYear()} Bitgain Arcade. All scores are earned.</span>
         <span className="footer__age">18+ · Skill-based games · No purchase necessary to play free modes</span>
       </div>
     </footer>

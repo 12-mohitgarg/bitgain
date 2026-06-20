@@ -1,11 +1,10 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useDemoModal } from './DemoModalContext';
 import CircuitFrame from './CircuitFrame';
 import GameArt from './GameArt';
 import './GameSpotlight.css';
 
 export default function GameSpotlight({ game, index = 0 }) {
-  const { openDemo } = useDemoModal();
   const reversed = index % 2 === 1;
   return (
     <motion.div
@@ -40,12 +39,12 @@ export default function GameSpotlight({ game, index = 0 }) {
             <span className="spotlight__stat-value">{game.skillNote}</span>
           </div>
         </div>
-        <button
+        <Link
           className={`btn btn--${game.accent === 'silver' ? 'ghost' : game.accent === 'violet' ? 'violet' : 'gold'}`}
-          onClick={() => openDemo(game.id)}
+          to={`/game/${game.id}`}
         >
           Demo {game.name}
-        </button>
+        </Link>
       </div>
     </motion.div>
   );

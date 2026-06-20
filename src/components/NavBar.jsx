@@ -37,7 +37,7 @@ export default function NavBar() {
             <img src={logo} alt="" />
           </span>
           <span className="navbar__wordmark">
-            BIT<span className="navbar__wordmark-accent">G</span>
+            BIT<span className="navbar__wordmark-accent">GAIN</span>
           </span>
         </NavLink>
 
