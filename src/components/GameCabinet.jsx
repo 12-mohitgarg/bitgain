@@ -17,13 +17,17 @@ export default function GameCabinet({ game, index = 0 }) {
     const y = (e.clientY - rect.top) / rect.height - 0.5;
     el.style.setProperty('--tiltX', `${(-y * 8).toFixed(2)}deg`);
     el.style.setProperty('--tiltY', `${(x * 10).toFixed(2)}deg`);
+    el.style.setProperty('--mouseX', `${(e.clientX - rect.left).toFixed(1)}px`);
+    el.style.setProperty('--mouseY', `${(e.clientY - rect.top).toFixed(1)}px`);
   }
-
+ 
   function handleMouseLeave() {
     const el = ref.current;
     if (!el) return;
     el.style.setProperty('--tiltX', '0deg');
     el.style.setProperty('--tiltY', '0deg');
+    el.style.setProperty('--mouseX', '-500px');
+    el.style.setProperty('--mouseY', '-500px');
   }
 
   return (

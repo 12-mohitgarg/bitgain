@@ -1,9 +1,21 @@
 .footer {
   border-top: 1px solid var(--line);
   margin-top: 120px;
-  background: linear-gradient(180deg, transparent, rgba(255,201,74,0.03));
+  background:
+    radial-gradient(circle at 80% 10%, rgba(55, 215, 255, 0.07), transparent 26rem),
+    linear-gradient(180deg, transparent, rgba(255,201,74,0.03));
   position: relative;
   overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 24%, rgba(255, 255, 255, 0.035), transparent 44%);
+  transform: translateX(-100%);
+  animation: footer-sheen 9s ease-in-out infinite;
+  pointer-events: none;
 }
 
 /* Ambient strip of tiny game-art icons running across the top of the footer */
@@ -12,6 +24,7 @@
   gap: 0;
   opacity: 0.5;
   border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.018);
 }
 
 .footer__strip-art {
@@ -22,7 +35,25 @@
   align-items: center;
   justify-content: center;
   padding: 10px 18px;
+  position: relative;
+  overflow: hidden;
 }
+
+.footer__strip-art::after {
+  content: '';
+  position: absolute;
+  inset: auto 20% 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  animation: footer-strip-pulse 4s ease-in-out infinite;
+}
+
+.footer__strip-art:nth-child(2)::after { animation-delay: 0.3s; }
+.footer__strip-art:nth-child(3)::after { animation-delay: 0.6s; }
+.footer__strip-art:nth-child(4)::after { animation-delay: 0.9s; }
+.footer__strip-art:nth-child(5)::after { animation-delay: 1.2s; }
+.footer__strip-art:nth-child(6)::after { animation-delay: 1.5s; }
 
 .footer__strip-art:last-child {
   border-right: none;
@@ -31,6 +62,11 @@
 .footer__strip-art .game-art {
   max-height: 100%;
   opacity: 0.55;
+  animation: footer-art-drift 5s ease-in-out infinite;
+}
+
+.footer__strip-art:nth-child(even) .game-art {
+  animation-delay: 0.8s;
 }
 
 .footer__top {
@@ -53,6 +89,8 @@
   overflow: hidden;
   border: 1px solid var(--gold-dim);
   flex-shrink: 0;
+  box-shadow: 0 0 18px rgba(245, 191, 66, 0.16);
+  animation: footer-coin 4.8s ease-in-out infinite;
 }
 
 .footer__coin img {
@@ -90,12 +128,29 @@
   justify-content: center;
   color: var(--ink-dim);
   transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer__social-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(245, 191, 66, 0.18), transparent 64%);
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .footer__social-btn:hover {
   color: var(--gold);
   border-color: var(--gold-dim);
   transform: translateY(-2px);
+}
+
+.footer__social-btn:hover::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .footer__cols {
@@ -121,12 +176,13 @@
 .footer__col a {
   font-size: 0.88rem;
   color: var(--silver);
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
   width: fit-content;
 }
 
 .footer__col a:hover {
   color: var(--gold);
+  transform: translateX(4px);
 }
 
 .footer__newsletter {
@@ -159,6 +215,7 @@
 .footer__newsletter-form input:focus {
   outline: none;
   border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(245, 191, 66, 0.08);
 }
 
 .footer__newsletter-form .btn {
@@ -181,6 +238,27 @@
   opacity: 0.7;
 }
 
+@keyframes footer-sheen {
+  0%, 58% { transform: translateX(-100%); opacity: 0; }
+  66% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes footer-strip-pulse {
+  0%, 100% { opacity: 0; transform: scaleX(0.25); }
+  50% { opacity: 0.85; transform: scaleX(1); }
+}
+
+@keyframes footer-art-drift {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+  50% { transform: translateY(-5px) scale(1.04); opacity: 0.75; }
+}
+
+@keyframes footer-coin {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(8deg); }
+}
+
 @media (max-width: 980px) {
   .footer__top {
     grid-template-columns: 1fr;
@@ -193,6 +271,15 @@
   }
   .footer__cols {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer::before,
+  .footer__strip-art::after,
+  .footer__strip-art .game-art,
+  .footer__coin {
+    animation: none;
   }
 }
 

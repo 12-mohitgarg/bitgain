@@ -2,7 +2,7 @@
   position: relative;
   border: 1px solid var(--line);
   background: var(--bg-panel);
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.28s ease, box-shadow 0.28s ease;
 }
 
 .circuit-frame__content {
@@ -74,6 +74,8 @@
 .circuit-frame:hover,
 .circuit-frame:focus-within {
   border-color: rgba(255, 201, 74, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
 }
 
 .circuit-frame--silver:hover,

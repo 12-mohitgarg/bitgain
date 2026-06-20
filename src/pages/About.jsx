@@ -7,16 +7,16 @@ import './About.css';
 
 const VALUES = [
   {
-    title: 'Skill decides outcomes',
-    detail: 'Every game on the floor rewards reaction time, pattern reading, or planning — never chance alone.',
+    title: 'Wallet-first access',
+    detail: 'Players sign in with their own crypto wallet by approving a free signature, with no email or password flow.',
   },
   {
-    title: 'Transparent rankings',
-    detail: 'Leaderboards are calculated the same way for everyone. No hidden multipliers, no pay-for-rank.',
+    title: 'Practice before risk',
+    detail: 'Every new account starts with a $100 practice balance so players can learn the platform before real-money play.',
   },
   {
-    title: 'Practice before you play',
-    detail: 'Every cabinet has a free practice mode. Learn the rhythm before you put your rank on the line.',
+    title: 'Clear earning wallets',
+    detail: 'Game winnings, investor earnings, referral income, club rewards, cashback, and lucky draw wins stay separated.',
   },
 ];
 
@@ -31,11 +31,11 @@ export default function About() {
             transition={{ duration: 0.5 }}
           >
             <span className="about-hero__eyebrow">About Bitg</span>
-            <h1 className="about-hero__title">Built for players who'd rather get good than get lucky.</h1>
+            <h1 className="about-hero__title">Built for wallet-first gaming and earning.</h1>
             <p className="about-hero__sub">
-              Bitg Arcade started as a question: what would a games platform look like if it took
-              competitive skill as seriously as a ranked ladder, without dressing it up as anything
-              other than a game?
+              Bitgain combines quick games, practice mode, referral access, lucky draws, and an
+              Investor product into one Binance Smart Chain experience that stays tied to the
+              player&apos;s own wallet.
             </p>
           </motion.div>
           <motion.div
@@ -54,8 +54,8 @@ export default function About() {
       <section className="section">
         <div className="container">
           <div className="section__head">
-            <span className="section__eyebrow">The Lineup</span>
-            <h2 className="section__title">What We Stand For</h2>
+            <span className="section__eyebrow">The Guide</span>
+            <h2 className="section__title">What The Platform Stands For</h2>
           </div>
           <div className="values-grid">
             {VALUES.map((v, i) => (
@@ -79,7 +79,7 @@ export default function About() {
         <div className="container">
           <div className="section__head">
             <span className="section__eyebrow">The Floor</span>
-            <h2 className="section__title">Six Games, One Standard</h2>
+            <h2 className="section__title">Games, rewards, and earning products</h2>
           </div>
           <div className="mosaic-grid">
             {GAMES.map((g, i) => (
@@ -103,17 +103,16 @@ export default function About() {
         <div className="container story">
           <div className="section__head">
             <span className="section__eyebrow">The Short Version</span>
-            <h2 className="section__title">Why We Built This</h2>
+            <h2 className="section__title">How Bitgain Fits Together</h2>
           </div>
           <p>
-            We're a small team of game designers and engineers who got tired of "earning" apps that
-            call themselves games but are really just spreadsheets with a slot-machine skin. So we
-            built six games we'd actually want to get good at — fast rounds, honest mechanics,
-            and a leaderboard that means something.
+            The guide describes Bitgain as a real-money gaming platform with a built-in earning
+            product. Players can begin with practice mode, activate Basic with a deposit, or unlock
+            Pro features such as the Investor product when they are ready.
           </p>
           <p>
-            There's no staking product here, no referral commissions, no token to chase. Just games,
-            scores, and a season that resets so everyone gets a clean shot at the top.
+            Because this involves crypto and real-money gameplay, the responsible path matters:
+            learn first, understand each wallet, and only participate with funds you can afford.
           </p>
         </div>
       </section>

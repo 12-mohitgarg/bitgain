@@ -1,7 +1,35 @@
 .help-hero {
   padding: 70px 0 50px;
   border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 22%, rgba(245, 191, 66, 0.12), transparent 22rem),
+    radial-gradient(circle at 76% 4%, rgba(69, 224, 167, 0.09), transparent 24rem);
 }
+
+.help-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(135deg, transparent 0 38px, rgba(255, 255, 255, 0.025) 38px 39px);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.help-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.help-hero__eyebrow,
+.help-hero__title,
+.help-search {
+  animation: page-title-pop 0.65s ease both;
+}
+
+.help-hero__title { animation-delay: 0.08s; }
+.help-search { animation-delay: 0.16s; }
 
 .help-hero__eyebrow {
   display: inline-block;
@@ -28,6 +56,25 @@
   border: 1px solid var(--line);
   background: var(--bg-panel);
   color: var(--ink-dim);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.help-search::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(245, 191, 66, 0.1), transparent);
+  transform: translateX(-110%);
+  animation: search-sheen 4.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.help-search:focus-within {
+  border-color: rgba(245, 191, 66, 0.52);
+  box-shadow: 0 0 0 5px rgba(245, 191, 66, 0.08), 0 18px 42px rgba(0, 0, 0, 0.24);
+  transform: translateY(-2px);
 }
 
 .help-search input {
@@ -57,6 +104,30 @@
 
 .faq-item {
   border-bottom: 1px solid var(--line);
+  position: relative;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.faq-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold), var(--cyan));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.25s ease;
+}
+
+.faq-item:hover {
+  background: rgba(255, 255, 255, 0.025);
+  transform: translateX(4px);
+}
+
+.faq-item:hover::before {
+  transform: scaleY(1);
 }
 
 .faq-question {
@@ -72,6 +143,11 @@
   font-size: 1rem;
   font-weight: 600;
   text-align: left;
+  transition: color 0.2s ease;
+}
+
+.faq-question:hover {
+  color: var(--gold-bright);
 }
 
 .faq-icon {
@@ -84,11 +160,18 @@
   align-items: center;
   justify-content: center;
   color: var(--gold);
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-question:hover .faq-icon {
+  border-color: rgba(245, 191, 66, 0.44);
+  box-shadow: 0 0 18px rgba(245, 191, 66, 0.16);
 }
 
 .faq-icon--open {
   transform: rotate(45deg);
+  background: rgba(245, 191, 66, 0.12);
+  animation: faq-open-pop 0.35s ease;
 }
 
 .faq-answer-wrap {
@@ -116,6 +199,38 @@
   border: 1px solid var(--line);
   border-radius: 14px;
   background: var(--bg-panel);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.help-aside-card::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(from 180deg, transparent, rgba(245, 191, 66, 0.12), transparent, rgba(55, 215, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  animation: aside-spin 8s linear infinite;
+}
+
+.help-aside-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(245, 191, 66, 0.28);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+}
+
+.help-aside-card:hover::before {
+  opacity: 1;
+}
+
+.help-aside-card:hover h3 {
+  color: var(--gold-bright);
+}
+
+.help-aside-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .help-aside-card h3 {
@@ -137,5 +252,52 @@
 @media (max-width: 880px) {
   .help-content {
     grid-template-columns: 1fr;
+  }
+}
+
+@keyframes help-lines {
+  to { transform: translate(-39px, 39px); }
+}
+
+@keyframes search-sheen {
+  0%, 42% { transform: translateX(-110%); opacity: 0; }
+  54% { opacity: 1; }
+  100% { transform: translateX(110%); opacity: 0; }
+}
+
+@keyframes aside-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes page-title-pop {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes faq-open-pop {
+  0% { transform: rotate(45deg) scale(0.85); }
+  70% { transform: rotate(45deg) scale(1.14); }
+  100% { transform: rotate(45deg) scale(1); }
+}
+
+@media (max-width: 640px) {
+  .help-hero {
+    padding: 54px 0 36px;
+  }
+
+  .faq-item:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .help-hero::before,
+  .help-search::after,
+  .help-aside-card::before,
+  .help-hero__eyebrow,
+  .help-hero__title,
+  .help-search,
+  .faq-icon--open {
+    animation: none;
   }
 }

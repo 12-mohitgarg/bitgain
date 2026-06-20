@@ -89,7 +89,7 @@ export function DemoProvider({ children }) {
 
 function DemoModal({ gameId, onClose }) {
   const game = GAMES.find((g) => g.id === gameId);
-  const [gameState, setGameState] = useState('idle'); // idle, playing, gameover
+  const [gameState, setGameState] = useState('idle'); // idle, booting, playing, gameover
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(15);
   const timerRef = useRef(null);
@@ -99,8 +99,18 @@ function DemoModal({ gameId, onClose }) {
     playSound('start');
     setScore(0);
     setTimeLeft(15);
-    setGameState('playing');
+    setGameState('booting');
   };
+
+  // Booting loader sequence
+  useEffect(() => {
+    if (gameState === 'booting') {
+      const timeout = setTimeout(() => {
+        setGameState('playing');
+      }, 1500);
+      return () => clearTimeout(timeout);
+    }
+  }, [gameState]);
 
   // Timer loop
   useEffect(() => {
@@ -194,6 +204,18 @@ function DemoModal({ gameId, onClose }) {
                   <button className="demo-btn-start" onClick={startGame}>
                     BOOT PREVIEW
                   </button>
+                </div>
+              )}
+
+              {gameState === 'booting' && (
+                <div className="demo-screen-boot">
+                  <div className="boot-terminal">
+                    <p className="boot-line active-line">BOOTING CABINET HARDWARE...</p>
+                    <p className="boot-line delay-1">ROM CHECKSUM: OK</p>
+                    <p className="boot-line delay-2">CONNECTING DIRECT ANALOG INPUT... OK</p>
+                    <p className="boot-line delay-3">LOADING CHIP EMULATOR CORE...</p>
+                    <div className="boot-cursor" />
+                  </div>
                 </div>
               )}
 

@@ -1,7 +1,36 @@
 .about-hero {
   padding: 80px 0;
   border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(245, 191, 66, 0.12), transparent 24rem),
+    radial-gradient(circle at 80% 18%, rgba(55, 215, 255, 0.1), transparent 24rem);
 }
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 22%, rgba(255, 255, 255, 0.055), transparent 43%);
+  transform: translateX(-100%);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.about-hero__grid {
+  position: relative;
+  z-index: 1;
+}
+
+.about-hero__eyebrow,
+.about-hero__title,
+.about-hero__sub {
+  animation: page-title-pop 0.65s ease both;
+}
+
+.about-hero__title { animation-delay: 0.08s; }
+.about-hero__sub { animation-delay: 0.16s; }
 
 .about-hero__grid {
   display: grid;
@@ -38,12 +67,25 @@
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 0 60px rgba(255, 201, 74, 0.18);
+  position: relative;
+  animation: about-coin-float 4.8s ease-in-out infinite;
+}
+
+.about-hero__coin::before {
+  content: '';
+  position: absolute;
+  inset: -30%;
+  background: conic-gradient(from 180deg, transparent, rgba(245, 191, 66, 0.32), transparent, rgba(55, 215, 255, 0.18), transparent);
+  animation: about-coin-ring 7s linear infinite;
+  z-index: 0;
 }
 
 .about-hero__coin img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
+  z-index: 1;
 }
 
 .values-grid {
@@ -57,16 +99,54 @@
   border: 1px solid var(--line);
   border-radius: 14px;
   background: var(--bg-panel);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.value-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 0%, rgba(245, 191, 66, 0.13), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(245, 191, 66, 0.32);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
+}
+
+.value-card:hover::after {
+  opacity: 1;
+}
+
+.value-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .value-card h3 {
   font-size: 1.05rem;
   margin-bottom: 10px;
   text-transform: none;
+  transition: color 0.22s ease, transform 0.22s ease;
 }
 
 .value-card p {
   font-size: 0.9rem;
+  transition: color 0.22s ease;
+}
+
+.value-card:hover h3 {
+  color: var(--gold-bright);
+  transform: translateY(-2px);
+}
+
+.value-card:hover p {
+  color: var(--silver);
 }
 
 .section--mosaic {
@@ -93,8 +173,27 @@
   transition: border-color 0.25s ease, transform 0.25s ease;
 }
 
+.mosaic-tile::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.08), transparent, rgba(245, 191, 66, 0.1), transparent);
+  animation: mosaic-spin 8s linear infinite;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
 .mosaic-tile:hover {
-  transform: translateY(-3px);
+  transform: translateY(-7px) scale(1.02);
+}
+
+.mosaic-tile:hover::before {
+  opacity: 1;
+}
+
+.mosaic-tile .game-art {
+  position: relative;
+  z-index: 1;
 }
 
 .mosaic-tile--gold:hover { border-color: rgba(255,201,74,0.4); }
@@ -108,17 +207,38 @@
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--ink);
+  transition: color 0.22s ease, transform 0.22s ease;
+}
+
+.mosaic-tile:hover .mosaic-tile__name {
+  color: var(--gold-bright);
+  transform: translateY(-4px);
 }
 
 .section--story {
-  background: var(--bg-panel);
+  background:
+    linear-gradient(90deg, rgba(55, 215, 255, 0.05), transparent 36%),
+    var(--bg-panel);
   border-top: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.section--story::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 80px, rgba(255, 255, 255, 0.025) 80px 81px);
+  animation: story-grid 22s linear infinite;
+  pointer-events: none;
 }
 
 .story p {
   max-width: 680px;
   font-size: 1rem;
   margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
 }
 
 .story p:last-child {
@@ -135,5 +255,46 @@
   }
   .values-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@keyframes about-hero-sheen {
+  0%, 52% { transform: translateX(-100%); opacity: 0; }
+  62% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes about-coin-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes about-coin-ring {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes mosaic-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes story-grid {
+  to { transform: translateX(-81px); }
+}
+
+@keyframes page-title-pop {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero::before,
+  .about-hero__coin,
+  .about-hero__coin::before,
+  .mosaic-tile::before,
+  .section--story::before,
+  .about-hero__eyebrow,
+  .about-hero__title,
+  .about-hero__sub {
+    animation: none;
   }
 }

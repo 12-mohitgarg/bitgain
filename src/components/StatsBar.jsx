@@ -18,9 +18,11 @@ export default function StatsBar() {
             key={s.label}
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -6, scale: 1.03 }}
             viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.4, delay: i * 0.08 }}
+            transition={{ type: 'spring', stiffness: 240, damping: 20, delay: i * 0.08 }}
           >
+            <span className="stats-bar__pulse" />
             <span className="stats-bar__value">{s.value}</span>
             <span className="stats-bar__label">{s.label}</span>
           </motion.div>

@@ -24,7 +24,12 @@ export default function Contact() {
       </section>
 
       <section className="container contact-grid">
-        <div className="contact-form-wrap">
+        <motion.div
+          className="contact-form-wrap"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+        >
           {submitted ? (
             <motion.div
               className="contact-success"
@@ -71,9 +76,14 @@ export default function Contact() {
               <button type="submit" className="btn btn--gold btn--lg btn--block">Send Message</button>
             </form>
           )}
-        </div>
-
-        <aside className="contact-info">
+        </motion.div>
+ 
+        <motion.aside
+          className="contact-info"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+        >
           <div className="info-card">
             <h3>Support</h3>
             <p>support@bitgarcade.com</p>
@@ -88,7 +98,7 @@ export default function Contact() {
             <h3>Community</h3>
             <p>Join the Discord for live match chat and patch notes.</p>
           </div>
-        </aside>
+        </motion.aside>
       </section>
     </div>
   );

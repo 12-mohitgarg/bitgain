@@ -1,8 +1,22 @@
 .stats-bar {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--bg-panel), rgba(21,21,30,0.4));
+  background:
+    linear-gradient(90deg, transparent, rgba(55, 215, 255, 0.05), transparent),
+    linear-gradient(180deg, var(--bg-panel), rgba(21,21,30,0.4));
   padding: 36px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 24%, rgba(255, 255, 255, 0.06), transparent 44%);
+  transform: translateX(-100%);
+  animation: stats-sheen 7s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .stats-bar__grid {
@@ -17,8 +31,11 @@
   align-items: center;
   text-align: center;
   gap: 6px;
-  padding: 0 12px;
+  padding: 8px 12px;
   border-left: 1px solid var(--line);
+  position: relative;
+  border-radius: 8px;
+  isolation: isolate;
 }
 
 .stats-bar__item:first-child {
@@ -29,6 +46,7 @@
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 3vw, 1.9rem);
   color: var(--gold);
+  text-shadow: 0 0 24px rgba(245, 191, 66, 0.24);
 }
 
 .stats-bar__label {
@@ -37,6 +55,31 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-dim);
+}
+
+.stats-bar__pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: radial-gradient(circle at 50% 0%, rgba(245, 191, 66, 0.16), transparent 58%);
+  opacity: 0;
+  z-index: -1;
+  animation: stat-pulse 3.6s ease-in-out infinite;
+}
+
+.stats-bar__item:nth-child(2) .stats-bar__pulse { animation-delay: 0.3s; }
+.stats-bar__item:nth-child(3) .stats-bar__pulse { animation-delay: 0.6s; }
+.stats-bar__item:nth-child(4) .stats-bar__pulse { animation-delay: 0.9s; }
+
+@keyframes stats-sheen {
+  0%, 50% { transform: translateX(-100%); opacity: 0; }
+  58% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes stat-pulse {
+  0%, 100% { opacity: 0; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1); }
 }
 
 @media (max-width: 640px) {
@@ -51,5 +94,12 @@
   .stats-bar__item:nth-child(4) {
     border-top: 1px solid var(--line);
     padding-top: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-bar::before,
+  .stats-bar__pulse {
+    animation: none;
   }
 }

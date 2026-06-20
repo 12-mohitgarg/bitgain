@@ -29,6 +29,7 @@ export default function Leaderboard() {
                 className={`podium__col podium__col--${rank}`}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8, scale: 1.03 }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
               >
                 <div className="podium__avatar">{p.name.charAt(0)}</div>
@@ -48,7 +49,7 @@ export default function Leaderboard() {
           <div className="lb-row lb-row--head">
             <span>Rank</span>
             <span>Player</span>
-            <span>Top Game</span>
+            <span className="lb-game">Top Game</span>
             <span>Streak</span>
             <span className="lb-align-right">Score</span>
           </div>
@@ -58,6 +59,7 @@ export default function Leaderboard() {
               key={p.rank}
               initial={{ opacity: 0, x: -12 }}
               whileInView={{ opacity: 1, x: 0 }}
+              whileHover={{ x: 8 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.4, delay: i * 0.04 }}
             >

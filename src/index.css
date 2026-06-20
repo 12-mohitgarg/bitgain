@@ -1,26 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 :root {
   /* Color tokens */
-  --bg-void: #0a0a0f;
-  --bg-panel: #15151e;
-  --bg-panel-raised: #1c1c28;
-  --gold: #ffc94a;
-  --gold-bright: #ffe08a;
-  --gold-dim: #8a6f2a;
-  --silver: #c9cdd6;
-  --silver-dim: #5a5e68;
-  --violet: #6b4fff;
-  --violet-bright: #8b73ff;
-  --win-green: #3ce7a3;
+  --bg-void: #07080d;
+  --bg-panel: #121621;
+  --bg-panel-raised: #1b2130;
+  --gold: #f5bf42;
+  --gold-bright: #ffe59b;
+  --gold-dim: #8b6a23;
+  --silver: #d7dce8;
+  --silver-dim: #6d7586;
+  --violet: #7257ff;
+  --violet-bright: #9a86ff;
+  --cyan: #37d7ff;
+  --mint: #45e0a7;
+  --coral: #ff6b81;
+  --win-green: #45e0a7;
   --loss-red: #ff5c7a;
-  --ink: #f5f4f0;
-  --ink-dim: #9a99a8;
-  --line: rgba(201, 205, 214, 0.12);
+  --ink: #f8f4ea;
+  --ink-dim: #a8adba;
+  --line: rgba(215, 220, 232, 0.14);
 
   /* Type */
-  --font-display: 'Arial Black', 'Helvetica Neue', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Manrope', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   color-scheme: dark;
@@ -34,21 +37,12 @@ html {
   scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 body {
   margin: 0;
-  background: var(--bg-void);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(55, 215, 255, 0.09), transparent 26rem),
+    radial-gradient(circle at 86% 8%, rgba(245, 191, 66, 0.1), transparent 28rem),
+    linear-gradient(180deg, #090b12 0%, var(--bg-void) 48%, #0a1012 100%);
   color: var(--ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -61,7 +55,7 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   margin: 0;
   text-transform: uppercase;
 }
@@ -118,8 +112,107 @@ input:focus-visible,
   padding: 0 24px;
 }
 
+.section {
+  padding: 96px 0;
+}
+
+.section__head {
+  margin-bottom: 48px;
+  max-width: 680px;
+}
+
+.section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.section__eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+}
+
+.section__title {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  line-height: 1.02;
+  margin-bottom: 12px;
+}
+
+.section__sub {
+  font-size: clamp(0.98rem, 2vw, 1.08rem);
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding: 70px 0;
+  }
+
+  .section__head {
+    margin-bottom: 34px;
+  }
+}
+
 @media (max-width: 640px) {
   .container {
     padding: 0 18px;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-terminal__screen,
+  .hero-token,
+  .games-console,
+  .games-console__meter span,
+  .games-console__row,
+  .guide-card,
+  .cabinet__screen,
+  .cabinet__play,
+  .trending-chip,
+  .stats-bar__item,
+  .step,
+  .level-row {
+    will-change: transform, opacity;
+  }
+
+  .hero::before,
+  .hero__beam,
+  .games-hero::before,
+  .games-hero::after,
+  .games-grid-wrap::before,
+  .lb-hero::before,
+  .help-hero::before,
+  .contact-hero::before,
+  .about-hero::before,
+  .section--story::before,
+  .footer::before,
+  .demo-modal-overlay::before,
+  .demo-modal-container::before,
+  .demo-arcade-screen::before,
+  .spotlight__visual::before,
+  .spotlight__visual::after,
+  .spotlight__screen::after,
+  .mosaic-tile::before,
+  .help-aside-card::before,
+  .contact-success::before,
+  .cabinet::after {
+    animation: none !important;
+  }
+
+  .hero-token,
+  .hero-terminal__screen,
+  .games-console,
+  .cabinet__screen,
+  .footer__social-btn,
+  .demo-modal-container {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 }

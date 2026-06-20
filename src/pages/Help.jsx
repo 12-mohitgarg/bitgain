@@ -5,28 +5,32 @@ import './Help.css';
 
 const FAQS = [
   {
-    q: 'Do I need to pay to play?',
-    a: 'No. Every game has a free practice mode with no time limit. Ranked play (which feeds the leaderboard) is also free — there\'s no entry fee to compete.',
+    q: 'Do I need an email or password?',
+    a: 'No. Bitgain uses wallet sign-in. Connect a wallet such as MetaMask or Trust Wallet and approve a free signature. Your wallet acts as your account.',
   },
   {
-    q: 'How is the leaderboard calculated?',
-    a: 'Your season score is the sum of your best results across ranked matches, weighted slightly by game difficulty. Ties are broken by win streak. Seasons reset quarterly so everyone starts fresh.',
+    q: 'Why do I need a referral code?',
+    a: 'The guide says new members register with a referral code from an existing member. It keeps the community accountable and unlocks your placement in the referral network.',
   },
   {
-    q: 'Can I play on mobile?',
-    a: 'Yes — the site is fully responsive and every game is built to work with touch controls, no app download required.',
+    q: 'Can I try games before using real funds?',
+    a: 'Yes. New accounts start with a $100 practice balance for 30 days, so you can learn the games risk-free before activating your account.',
   },
   {
-    q: 'What happens if I lose connection mid-match?',
-    a: 'Matches auto-pause for up to 60 seconds if you disconnect. If you don\'t reconnect in time, the match is scored as a forfeit and won\'t count against your streak.',
+    q: 'What are the account levels?',
+    a: 'Practice is free on signup. Basic unlocks after a $10 deposit and includes real-money games, referrals, and cashback. Pro unlocks after a $100 deposit and adds the Investor product.',
   },
   {
-    q: 'Is there any randomness involved in the games?',
-    a: 'Some games (like Spectrum Call) involve reading a pattern under time pressure, but outcomes are driven by your decisions and reaction time, not house-controlled chance. We don\'t run games designed around fixed payout odds.',
+    q: 'How are balances organized?',
+    a: 'Bitgain separates Game, Winnings, Investor, Referral, Club, Lucky Draw, and Cashback wallets so players can see where each balance came from.',
   },
   {
-    q: 'How do I report a bug or unfair match?',
-    a: 'Use the Contact page and select "Report an Issue." Include the match ID shown in your match history and we\'ll look into it within 48 hours.',
+    q: 'How do withdrawals work?',
+    a: 'Choose a withdrawable balance on the Withdraw page. The guide notes a 10% platform fee and says payouts are made in BTG after approval.',
+  },
+  {
+    q: 'Is there any risk?',
+    a: 'Yes. These are real-money games and crypto products. Only play with what you can afford, start in practice mode, and use the platform responsibly. 18+ only.',
   },
 ];
 
@@ -62,7 +66,12 @@ export default function Help() {
       </section>
 
       <section className="container help-content" id="fair-play">
-        <div className="faq-list">
+        <motion.div
+          className="faq-list"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+        >
           {filtered.map((f, i) => {
             const isOpen = openIndex === i;
             return (
@@ -94,23 +103,29 @@ export default function Help() {
           {filtered.length === 0 && (
             <p className="faq-empty">No results for "{query}". Try a different search, or contact us directly.</p>
           )}
-        </div>
-
-        <aside className="help-aside" id="responsible">
+        </motion.div>
+ 
+        <motion.aside
+          className="help-aside"
+          id="responsible"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+        >
           <div className="help-aside-card">
             <h3>Still stuck?</h3>
             <p>Our support team replies within a day.</p>
             <Link to="/contact" className="btn btn--gold btn--block">Contact Us</Link>
           </div>
           <div className="help-aside-card" id="terms">
-            <h3>Play Responsibly</h3>
-            <p>These are skill games meant for fun and friendly competition. Take breaks, and play at a pace that feels good.</p>
+          <h3>Play Responsibly</h3>
+            <p>Real-money gaming and crypto products carry risk. Start with practice mode and only play with what you can afford.</p>
           </div>
           <div className="help-aside-card" id="privacy">
             <h3>Privacy & Terms</h3>
             <p>We collect only what's needed to run matches and leaderboards. Full policy available on request via Contact.</p>
           </div>
-        </aside>
+        </motion.aside>
       </section>
     </div>
   );

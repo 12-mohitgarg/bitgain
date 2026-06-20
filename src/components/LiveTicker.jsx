@@ -1,12 +1,12 @@
 import './LiveTicker.css';
 
 const FEED = [
-  { name: 'R. Mehta', action: 'topped the board in', game: 'Reflex Grid', score: '4,820 pts' },
-  { name: 'A. Khan', action: 'won', game: 'Ludo Royale', score: '3-game streak' },
-  { name: 'S. Patel', action: 'called it right in', game: 'Spectrum Call', score: '6 in a row' },
-  { name: 'D. Verma', action: 'cleared', game: 'Cascade Match', score: '12x combo' },
-  { name: 'J. Roy', action: 'set a new best in', game: 'Number Sprint', score: '38 solved' },
-  { name: 'M. Singh', action: 'outplayed a rival in', game: 'Hex Tactics', score: 'flawless win' },
+  { name: 'Wallet 8F2A', action: 'activated', game: 'Practice Mode', score: '$100 demo' },
+  { name: 'A. Khan', action: 'won', game: 'Ludo Royale', score: '2x payout' },
+  { name: 'S. Patel', action: 'called Violet in', game: 'Color Prediction', score: '4.5x result' },
+  { name: 'D. Verma', action: 'claimed from', game: 'Investor Wallet', score: '1% daily' },
+  { name: 'J. Roy', action: 'entered', game: 'Golden Draw', score: 'hourly pool' },
+  { name: 'M. Singh', action: 'unlocked', game: 'Referral Network', score: '15 levels' },
 ];
 
 export default function LiveTicker() {
