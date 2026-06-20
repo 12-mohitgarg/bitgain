@@ -1,0 +1,123 @@
+.spotlight {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.spotlight:last-child {
+  border-bottom: none;
+}
+
+.spotlight--reversed {
+  direction: rtl;
+}
+
+.spotlight--reversed > * {
+  direction: ltr;
+}
+
+.spotlight__frame {
+  border-radius: 18px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.spotlight__screen {
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px;
+  position: relative;
+  background: linear-gradient(160deg, var(--bg-panel-raised), #0a0a10);
+}
+
+.spotlight__screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.015) 0px,
+    rgba(255,255,255,0.015) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+.spotlight__screen .game-art {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 30px rgba(0,0,0,0.4));
+}
+
+.spotlight__screen--gold { box-shadow: inset 0 0 80px rgba(255,201,74,0.08); }
+.spotlight__screen--silver { box-shadow: inset 0 0 80px rgba(201,205,214,0.08); }
+.spotlight__screen--violet { box-shadow: inset 0 0 80px rgba(139,115,255,0.1); }
+
+.spotlight__tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+
+.spotlight__tag--gold { color: var(--gold); border-color: rgba(255,201,74,0.3); }
+.spotlight__tag--silver { color: var(--silver); border-color: rgba(201,205,214,0.3); }
+.spotlight__tag--violet { color: var(--violet-bright); border-color: rgba(139,115,255,0.35); }
+
+.spotlight__name {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  margin-bottom: 16px;
+}
+
+.spotlight__blurb {
+  font-size: 0.96rem;
+  max-width: 460px;
+  margin-bottom: 28px;
+}
+
+.spotlight__stats {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.spotlight__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spotlight__stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.spotlight__stat-value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+@media (max-width: 880px) {
+  .spotlight,
+  .spotlight--reversed {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: 28px;
+    padding: 40px 0;
+  }
+}

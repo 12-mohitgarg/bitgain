@@ -1,0 +1,139 @@
+.about-hero {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.about-hero__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.about-hero__eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.about-hero__title {
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+
+.about-hero__sub {
+  font-size: 1.02rem;
+  max-width: 480px;
+}
+
+.about-hero__coin {
+  justify-self: center;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(255, 201, 74, 0.18);
+}
+
+.about-hero__coin img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.value-card {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-panel);
+}
+
+.value-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+  text-transform: none;
+}
+
+.value-card p {
+  font-size: 0.9rem;
+}
+
+.section--mosaic {
+  border-top: 1px solid var(--line);
+}
+
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.mosaic-tile {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, var(--bg-panel-raised), #0c0c12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.mosaic-tile:hover {
+  transform: translateY(-3px);
+}
+
+.mosaic-tile--gold:hover { border-color: rgba(255,201,74,0.4); }
+.mosaic-tile--silver:hover { border-color: rgba(201,205,214,0.4); }
+.mosaic-tile--violet:hover { border-color: rgba(139,115,255,0.45); }
+
+.mosaic-tile__name {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.section--story {
+  background: var(--bg-panel);
+  border-top: 1px solid var(--line);
+}
+
+.story p {
+  max-width: 680px;
+  font-size: 1rem;
+  margin-bottom: 18px;
+}
+
+.story p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 880px) {
+  .about-hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .about-hero__coin {
+    width: 180px;
+    height: 180px;
+  }
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+}
