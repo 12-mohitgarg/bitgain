@@ -47,10 +47,7 @@ export default function NavBar() {
           ))}
         </nav>
 
-        <div className="navbar__actions">
-          <button className="btn btn--ghost">Sign In</button>
-          <button className="btn btn--gold">Play Now</button>
-        </div>
+        <div className="navbar__actions" />
 
         <button
           className={`navbar__burger ${open ? 'navbar__burger--open' : ''}`}
@@ -76,10 +73,7 @@ export default function NavBar() {
             {t.label}
           </NavLink>
         ))}
-        <div className="navbar__mobile-actions">
-          <button className="btn btn--ghost">Sign In</button>
-          <button className="btn btn--gold">Play Now</button>
-        </div>
+
       </div>
     </header>
   );

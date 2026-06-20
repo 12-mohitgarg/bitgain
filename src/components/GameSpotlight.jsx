@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
+import { useDemoModal } from './DemoModalContext';
 import CircuitFrame from './CircuitFrame';
 import GameArt from './GameArt';
 import './GameSpotlight.css';
 
 export default function GameSpotlight({ game, index = 0 }) {
+  const { openDemo } = useDemoModal();
   const reversed = index % 2 === 1;
   return (
     <motion.div
@@ -38,8 +40,11 @@ export default function GameSpotlight({ game, index = 0 }) {
             <span className="spotlight__stat-value">{game.skillNote}</span>
           </div>
         </div>
-        <button className={`btn btn--${game.accent === 'silver' ? 'ghost' : game.accent === 'violet' ? 'violet' : 'gold'}`}>
-          Play {game.name}
+        <button
+          className={`btn btn--${game.accent === 'silver' ? 'ghost' : game.accent === 'violet' ? 'violet' : 'gold'}`}
+          onClick={() => openDemo(game.id)}
+        >
+          Demo {game.name}
         </button>
       </div>
     </motion.div>

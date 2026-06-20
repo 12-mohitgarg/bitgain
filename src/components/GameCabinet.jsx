@@ -1,10 +1,12 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useDemoModal } from './DemoModalContext';
 import CircuitFrame from './CircuitFrame';
 import GameArt from './GameArt';
 import './GameCabinet.css';
 
 export default function GameCabinet({ game, index = 0 }) {
+  const { openDemo } = useDemoModal();
   const ref = useRef(null);
 
   function handleMouseMove(e) {
@@ -57,8 +59,8 @@ export default function GameCabinet({ game, index = 0 }) {
             <span className="cabinet__dot">•</span>
             <span>{game.difficulty}</span>
           </div>
-          <button className="cabinet__play">
-            Play
+          <button className="cabinet__play" onClick={() => openDemo(game.id)}>
+            Launch Demo
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M3 1L11 7L3 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

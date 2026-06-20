@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { DemoProvider } from './components/DemoModal';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -27,7 +28,7 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <>
+    <DemoProvider>
       <ScrollToTop />
       <NavBar />
       <main>
@@ -43,6 +44,6 @@ export default function App() {
         </AnimatePresence>
       </main>
       <Footer />
-    </>
+    </DemoProvider>
   );
 }
